@@ -1,0 +1,4 @@
+
+#define I2C_ADDRESS_LCD           0x27
+#define I2C_ADDRESS_ACCELEROMETER 0x26
+#define I2C_ADDRESS_1_WIRE        0x18
