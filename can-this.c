@@ -13,9 +13,8 @@
 #include "lpg.h"
 #include "ambient.h"
 
-#define  MIN_MS   100 //Minimum time between transmissions
+#define  MIN_MS  1000 //Minimum time between transmissions
 #define  MAX_MS 10000 //Maximum time before retransmission
-#define BASE_MS 1000
 
 static void receive(uint16_t id, uint8_t length, void* pData)
 {
