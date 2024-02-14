@@ -224,7 +224,7 @@ static void displayHome3()
 }
 static void displayHome4()
 {
-    snprintf(line1, 17, "Scan time %dms", MsTimerScanTime);
+    snprintf(line0, 17, "Scan time %dms", MsTimerScanTime);
 }
 static void displayFresh0()
 {
