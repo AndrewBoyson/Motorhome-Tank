@@ -86,5 +86,4 @@ void CanThisMain(void)
     { uint64_t value = AmbientGetHeatingRom          (); static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_AMBIENT_HEATING_ROM , sizeof(value), &value); }
     {  int16_t value = AmbientGetOutsideTemp16ths    (); static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_AMBIENT_OUTSIDE_TEMP, sizeof(value), &value); }
     {  int16_t value = AmbientGetHeatingTemp16ths    (); static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_AMBIENT_HEATING_TEMP, sizeof(value), &value); }
-    
 }
