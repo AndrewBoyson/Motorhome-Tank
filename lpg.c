@@ -60,7 +60,8 @@ int8_t LpgGetVolumePercent()
 {
     if (_resistanceMax16ths == _resistanceMin16ths) return 100; //Ensure no subsequent division by zero
     
-    int32_t percent = 100L * LpgGetResistance16ths() / (_resistanceMax16ths - _resistanceMin16ths);
+    int32_t percent = 100L * (LpgGetResistance16ths() - _resistanceMin16ths) / (_resistanceMax16ths - _resistanceMin16ths);
+    //int32_t percent = 100L * LpgGetResistance16ths() / (_resistanceMax16ths - _resistanceMin16ths);
     //int32_t percent = 100L * LpgGetResistance16ths() / _resistanceFull / 16;
     
     if (percent > 110) percent = 110;
@@ -72,7 +73,8 @@ int16_t LpgGetVolumeMl() //Actually 1024ths of a litre
 {
     if (_resistanceMax16ths == _resistanceMin16ths) return 30*1024; //Ensure no subsequent division by zero
     
-    int32_t ml = _volumeMinMl + (int32_t)(_volumeMaxMl - _volumeMinMl) * LpgGetResistance16ths() / (_resistanceMax16ths - _resistanceMin16ths);
+    int32_t ml = _volumeMinMl + (int32_t)(_volumeMaxMl - _volumeMinMl) * (LpgGetResistance16ths() - _resistanceMin16ths) / (_resistanceMax16ths - _resistanceMin16ths);
+    //int32_t ml = _volumeMinMl + (int32_t)(_volumeMaxMl - _volumeMinMl) * LpgGetResistance16ths() / (_resistanceMax16ths - _resistanceMin16ths);
     //int32_t ml = (int32_t)CAPACITY_LITRES * 1024 / 16 * LpgGetResistance16ths() / _resistanceFull; // Biggest is 5 + 6 + 16 = 27bit;
     
     if (ml >  30*1024) ml =  30*1024;
