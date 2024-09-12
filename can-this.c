@@ -3,7 +3,7 @@
 #include "../msticker.h"
 #include "../can.h"
 #include "../canids.h"
-#include "../1-wire-roms.h"
+#include "../1-wire-device.h"
 
 #include "fresh-water.h"
 #include "fresh-sensor.h"
@@ -65,14 +65,14 @@ void CanThisMain(void)
     {  int16_t value = AccelerometerGetY             (); static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_ACCELEROMETER_Y     , sizeof(value), &value); }
     {  int16_t value = AccelerometerGetZ             (); static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_ACCELEROMETER_Z     , sizeof(value), &value); }
     
-    { uint64_t value = OneWireRom[0]                   ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1WIRE_ROM_0         , sizeof(value), &value); }
-    { uint64_t value = OneWireRom[1]                   ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1WIRE_ROM_1         , sizeof(value), &value); }
-    { uint64_t value = OneWireRom[2]                   ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1WIRE_ROM_2         , sizeof(value), &value); }
-    { uint64_t value = OneWireRom[3]                   ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1WIRE_ROM_3         , sizeof(value), &value); }
-    {  int16_t value = OneWireRomData[0]               ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1WIRE_ROM_DATA_0    , sizeof(value), &value); }
-    {  int16_t value = OneWireRomData[1]               ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1WIRE_ROM_DATA_1    , sizeof(value), &value); }
-    {  int16_t value = OneWireRomData[2]               ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1WIRE_ROM_DATA_2    , sizeof(value), &value); }
-    {  int16_t value = OneWireRomData[3]               ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1WIRE_ROM_DATA_3    , sizeof(value), &value); }
+    { uint64_t value = OneWireDeviceGetIdByIndex(0)    ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1_WIRE_ID_0         , sizeof(value), &value); }
+    { uint64_t value = OneWireDeviceGetIdByIndex(1)    ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1_WIRE_ID_1         , sizeof(value), &value); }
+    { uint64_t value = OneWireDeviceGetIdByIndex(2)    ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1_WIRE_ID_2         , sizeof(value), &value); }
+    { uint64_t value = OneWireDeviceGetIdByIndex(3)    ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1_WIRE_ID_3         , sizeof(value), &value); }
+    {  int16_t value = OneWireDeviceGetDataByIndex(0)  ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1_WIRE_DATA_0       , sizeof(value), &value); }
+    {  int16_t value = OneWireDeviceGetDataByIndex(1)  ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1_WIRE_DATA_1       , sizeof(value), &value); }
+    {  int16_t value = OneWireDeviceGetDataByIndex(2)  ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1_WIRE_DATA_2       , sizeof(value), &value); }
+    {  int16_t value = OneWireDeviceGetDataByIndex(3)  ; static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_1_WIRE_DATA_3       , sizeof(value), &value); }
     
     {  int16_t value = LpgGetMvRaw                   (); static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_LPG_MV              , sizeof(value), &value); }
     {  int16_t value = LpgGetResistance16ths         (); static struct CanTransmitState state; CanTransmitOnChange(&state, CAN_ID_TANK, CAN_ID_LPG_RESISTANCE      , sizeof(value), &value); }

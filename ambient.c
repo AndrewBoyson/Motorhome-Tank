@@ -1,7 +1,7 @@
 #include <stdint.h>
 
 #include "../eeprom.h"
-#include "../1-wire-roms.h"
+#include "../1-wire-device.h"
 
 #include "eeprom-this.h"
 
@@ -13,8 +13,8 @@ uint64_t AmbientGetHeatingRom() { return _heatingRom; }
 void     AmbientSetOutsideRom(uint64_t value) { _outsideRom = value; EepromSaveU64(EEPROM_AMBIENT_OUTSIDE_ROM_U64, value); }
 void     AmbientSetHeatingRom(uint64_t value) { _heatingRom = value; EepromSaveU64(EEPROM_AMBIENT_HEATING_ROM_U64, value); }
 
-int16_t  AmbientGetOutsideTemp16ths() { return OneWireRomDataFromCode(_outsideRom); }
-int16_t  AmbientGetHeatingTemp16ths() { return OneWireRomDataFromCode(_heatingRom); }
+int16_t  AmbientGetOutsideTemp16ths() { return OneWireDeviceGetDataById(_outsideRom); }
+int16_t  AmbientGetHeatingTemp16ths() { return OneWireDeviceGetDataById(_heatingRom); }
 
 void     AmbientInit()
 {

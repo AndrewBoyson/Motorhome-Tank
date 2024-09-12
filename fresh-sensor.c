@@ -1,7 +1,7 @@
 #include <stdint.h>
 
 #include "../eeprom.h"
-#include "../1-wire-roms.h"
+#include "../1-wire-device.h"
 
 #include "adc.h"
 #include "eeprom-this.h"
@@ -25,7 +25,7 @@ void     FreshSensorSetRom          (uint64_t value) { _rom                 = va
 
 int16_t FreshSensorGetTemperature16ths()
 {
-    return OneWireRomDataFromCode(_rom);
+    return OneWireDeviceGetDataById(_rom);
 }
 int16_t FreshSensorGetSupplyMv()
 {
